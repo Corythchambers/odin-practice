@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form-styles.css">
+</head>
+<body>
+    <div>
+        <form action='example.com/path' method="post">
+                <fieldset>
+                    <legend>Contact Details</legend>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" placeholder="Bob..." name="first_name">
+                    <label for="user_email">Email * </label>
+                    <input type="email" id="user_email" placeholder="email@email.com"    required>
+                    <label for="user_password">Password</label>
+                    <input type="password" id="user_password" placeholder="password" minlength="3" required>
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob">
+                </fieldset>
+
+            <textarea rows="20" cols="60">Some initial content</textarea>
+
+            <label for="car">Car</label>
+            <select name="car">
+                <option value="mercedes">Mercedes</option>
+                <option value="bmw" selected>BMW</option>
+            </select>
+
+            <select name="fasion">
+                <optgroup label="Clothing">
+                    <option value="t_shirt">T-shirts</option>
+                </optgroup>
+                <optgroup label="Foot Wear">
+                    <option value="sneakers">Sneakers</option>
+                </optgroup>
+            </select>
+
+            <fieldset>
+                <legend>Size</legend>
+                <div>
+                    <input type="radio" id="child" name="ticket_type" value="child">
+                    <label for="child">Child</label>
+                </div>
+        
+                <div>
+                    <input type="radio" id="adult" name="ticket_type" value="adult" checked>
+                    <label for="adult">Adult</label>
+                </div>
+                
+                <div>
+                    <input type="radio" id="senior" name="ticket_type" value="senior">
+                    <label for="senior">Senior</label>
+                </div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Toppings</legend>
+                <div>
+                    <input type="checkbox" id="sausage" name="topping" value="sausage" checked>
+                    <label for="sausage">Sausage</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="cheese" name="topping" value="cheese">
+                    <label for="cheese">Cheese</label>
+                </div>
+            </fieldset>
+        
+            
+    
+            <button type="submit">Click me</button>
+            <button type="reset">Reset</button>
+           
+        </form>
+    </div>
+    
+</body>
+</html>
