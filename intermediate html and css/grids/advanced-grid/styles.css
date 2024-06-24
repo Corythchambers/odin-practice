@@ -1,0 +1,28 @@
+.grid-container {
+    resize: both;
+    overflow: auto;
+    display: grid;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid grey;
+    grid-template-rows: repeat(2, min(200px, 50%));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.grid-item {
+    background-color: #444;
+    text-align: center;
+    color: #ddd;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    padding: 12px;
+}
+
+p {
+    margin: 12px auto 24px;
+}
+
+img {
+    height: 60px;
+    border-radius: 50%;
+}
