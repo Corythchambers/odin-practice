@@ -27,8 +27,12 @@ html, body {
     grid-column: 2 / 10;
     grid-row: 1 / 2;
     background-color: white;
+    display: grid;
+    grid-template-columns: 3fr 2fr
+}
+
+.header > * {
     display: flex;
-    flex-direction: column;
 }
 
 .main-content {
@@ -41,14 +45,4 @@ html, body {
     display: flex;
     align-items: center; /* Vertically center the items */
     padding: 10px;
-}
-
-#top-nav, #nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-#top-nav {
-    margin-bottom: 20px;
 }
