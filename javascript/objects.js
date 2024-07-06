@@ -75,4 +75,16 @@ theHobbit = new Book("The Hobbit", "JRR Tolkien", "295", true);
 console.log(theHobbit.info());
 
 
+// Prototype stuff
+Player.prototype.sayHello = function() {
+    console.log("Hellow, I'm a player!");
+};
 
+player.sayHello();
+
+console.log(Object.getPrototypeOf(Player.prototype) == Object.prototype);
+
+console.log(player.valueOf());
+
+console.log(player.hasOwnProperty('valueOf'));
+console.log(Object.prototype.hasOwnProperty('valueOf'));
