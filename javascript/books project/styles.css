@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  div {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="checkbox"] {
+    margin-left: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #library-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .book-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .book-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .book-card p {
+    margin: 5px 0;
+  }
+  
+  .book-card label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  .book-card button {
+    background-color: #dc3545;
+  }
+  
+  .book-card button:hover {
+    background-color: #c82333;
+  }
+  
