@@ -13,7 +13,7 @@ class Game {
         while (!this.winnerFound) {
             const player = this.players[this.currentPlayerIndex];
             // get input from player
-            console.log(`${players[currentPlayerIndex]}'s turn`)
+            console.log(`${this.players[this.currentPlayerIndex].name}'s turn`)
             const x = Math.floor(Math.random() * this.gameBoard.boardSize);
             const y = Math.floor(Math.random() * this.gameBoard.boardSize);
             if (this.makeMove(player, x, y)) {
@@ -22,17 +22,21 @@ class Game {
             }
         }
         console.log("Winner!");
+        this.gameBoard.displayBoard();
         console.log("Want to play again?")
         // TODO: add logic for playing again
     }
 
     makeMove(player, x, y) {
         if (x >= this.gameBoard.boardSize || y >= this.gameBoard.boardSize) {
+            console.log(`${x}, ${y} is NOT a valid move, try again`)
             return false;
-        } else if (this.gameBoard.board[x][y] === 0) {
+        } else if (this.gameBoard.board[x][y] === this.gameBoard.emptySymbol) {
+            console.log(`${x}, ${y} is a valid move`)
             this.gameBoard.board[x][y] = player.symbol;
             return true;
         } else {
+            console.log(`${x}, ${y} is NOT a valid move, try again`)
             return false;
         }
     }
