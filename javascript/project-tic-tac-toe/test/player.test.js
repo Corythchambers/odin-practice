@@ -1,4 +1,4 @@
-const Player = require('../src/player');
+import Player from "../src/player";
 
 test('Player initializes with name and symbol', () => {
     const player = new Player('Joe', 'X');
