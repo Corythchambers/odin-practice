@@ -27,3 +27,15 @@ test('Game checkForWinner identifies a winning condition', () => {
     const winner = game.checkForWinner(player.symbol);
     expect(winner).toBe(true);
 });
+
+test('Game checkForTie identifies a tie condition', () => {
+    const game = new Game();
+    const player = game.players[0];
+    for (let i = 0; i < game.gameBoard.boardSize; i++) {
+        for (let j = 0; j < game.gameBoard.boardSize; j++) {
+            game.makeMove(player, i, j);
+        }
+    }
+    const tie = game.checkForTie();
+    expect(tie).toBe(true);
+})

@@ -7,10 +7,11 @@ class Game {
         this.players = [new Player('Joe', 'X'), new Player('Blow', 'O')];
         this.winnerFound = false;
         this.currentPlayerIndex = 0;
+        this.tie = false;
     }
 
     start() {
-        while (!this.winnerFound) {
+        while (!this.winnerFound && !this.tie) {
             const player = this.players[this.currentPlayerIndex];
             // get input from player
             console.log(`${this.players[this.currentPlayerIndex].name}'s turn`)
@@ -18,10 +19,17 @@ class Game {
             const y = Math.floor(Math.random() * this.gameBoard.boardSize);
             if (this.makeMove(player, x, y)) {
                 this.winnerFound = this.checkForWinner(player.symbol);
+                if (!this.winnerFound) {
+                    this.tie = this.checkForTie();
+                }
                 this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
             }
         }
-        console.log("Winner!");
+        if (this.winnerFound) {
+            console.log("Winner!");
+        } else if (this.tie) {
+            console.log("Its a tie!");
+        }
         this.gameBoard.displayBoard();
         console.log("Want to play again?")
         // TODO: add logic for playing again
@@ -55,8 +63,19 @@ class Game {
             (board[0][2] === symbol && board[1][1] === symbol && board[2][0] === symbol)) {
             return true;
         }
-
+        
         return false;
+    }
+
+    checkForTie() {
+        for (let i = 0; i < this.gameBoard.boardSize; i++) {
+            for (let j = 0; j < this.gameBoard.boardSize; j++) {
+                if (this.gameBoard.board[i][j] === this.gameBoard.emptySymbol) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 
