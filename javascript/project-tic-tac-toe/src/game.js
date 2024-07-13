@@ -1,5 +1,6 @@
-const Gameboard = require('./gameboard');
-const Player = require('./player');
+import Gameboard from './gameboard.js';
+import Player from './player.js';
+import DisplayController from './display.js';
 
 class Game {
     constructor() {
@@ -8,6 +9,7 @@ class Game {
         this.winnerFound = false;
         this.currentPlayerIndex = 0;
         this.tie = false;
+        DisplayController.renderBoard(this.gameBoard.board);
     }
 
     start() {
@@ -18,6 +20,7 @@ class Game {
             const x = Math.floor(Math.random() * this.gameBoard.boardSize);
             const y = Math.floor(Math.random() * this.gameBoard.boardSize);
             if (this.makeMove(player, x, y)) {
+                DisplayController.renderBoard(this.gameBoard.board);
                 this.winnerFound = this.checkForWinner(player.symbol);
                 if (!this.winnerFound) {
                     this.tie = this.checkForTie();
@@ -79,4 +82,4 @@ class Game {
     }
 }
 
-module.exports = Game
+export default Game;

@@ -1,4 +1,4 @@
-const Game = require('./src/game');
+import Game from './game.js';
 
 const newGame = new Game();
 newGame.start();
