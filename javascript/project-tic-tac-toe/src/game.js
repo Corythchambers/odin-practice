@@ -3,9 +3,9 @@ import Player from './player.js';
 import DisplayController from './display.js';
 
 class Game {
-    constructor() {
+    constructor(playerName) {
         this.gameBoard = new Gameboard();
-        this.players = [new Player('Joe', 'X'), new Player('Blow', 'O')];
+        this.players = [new Player(playerName, 'X'), new Player('Computer Joe', 'O')];
         this.winnerFound = false;
         this.currentPlayerIndex = 0;
         this.tie = false;
@@ -16,20 +16,38 @@ class Game {
 
     handleCellClick(rowIndex, cellIndex) {
         const player = this.players[this.currentPlayerIndex];
-        if (this.makeMove(player, rowIndex, cellIndex)) {
-            DisplayController.renderBoard(this.gameBoard.board, this.handleCellClick);
-            this.winnerFound = this.checkForWinner(player.symbol);
-            if (!this.winnerFound) {
-                this.tie = this.checkForTie();
-                if (this.tie) {
-                    alert("It's a tie!");
-                } else {
-                    this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-                    DisplayController.updatePlayerTurn(this.players[this.currentPlayerIndex].name);
-                }
+        if (player.name !== 'Computer Joe' && this.makeMove(player, rowIndex, cellIndex)) {
+            this.afterMove(player);
+        }
+    }
+
+    computerMove() {
+        const player = this.players[this.currentPlayerIndex];
+        let x, y;
+        do {
+            x = Math.floor(Math.random() * this.gameBoard.boardSize);
+            y = Math.floor(Math.random() * this.gameBoard.boardSize);
+        } while (!this.makeMove(player, x, y));
+
+        this.afterMove(player);
+    }
+
+    afterMove(player) {
+        DisplayController.renderBoard(this.gameBoard.board, this.handleCellClick);
+        this.winnerFound = this.checkForWinner(player.symbol);
+        if (!this.winnerFound) {
+            this.tie = this.checkForTie();
+            if (this.tie) {
+                alert("It's a tie!");
             } else {
-                alert(`${player.name} wins!`);
+                this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+                DisplayController.updatePlayerTurn(this.players[this.currentPlayerIndex].name);
+                if (this.players[this.currentPlayerIndex].name === 'Computer Joe') {
+                    this.computerMove();
+                }
             }
+        } else {
+            alert(`${player.name} wins!`);
         }
     }
 
@@ -51,7 +69,7 @@ class Game {
         const board = this.gameBoard.board;
 
         // Check rows and columns
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < this.gameBoard.boardSize; i++) {
             if ((board[i][0] === symbol && board[i][1] === symbol && board[i][2] === symbol) ||
                 (board[0][i] === symbol && board[1][i] === symbol && board[2][i] === symbol)) {
                 return true;
