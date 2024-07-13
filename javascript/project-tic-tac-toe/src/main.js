@@ -1,4 +1,3 @@
 import Game from './game.js';
 
-const newGame = new Game();
-newGame.start();
+const game = new Game();
